@@ -1,0 +1,27 @@
+server:
+  requestLog:
+    timeZone: UTC
+  applicationConnectors:
+    - type: http
+      port: 8080
+
+  adminConnectors:
+    - type: http
+      port: 8081
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+
+ocspResponder:
+  keyStorePath: /path/to/ocsp-signing.jks
+  keyStorePassphrase: "notsecret"
+  keyStoreAlias: "ocsp-signing"
+
+certificateAuthority:
+  caIndexFile: /path/to/index.txt
+  refreshSeconds: 10
+  crlFiles:
+    - name: "crl.pem"
+      filePath: /path/to/crl.pem
