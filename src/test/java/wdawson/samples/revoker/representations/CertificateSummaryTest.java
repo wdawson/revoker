@@ -1,8 +1,9 @@
 package wdawson.samples.revoker.representations;
 
-import java.math.BigInteger;
-import javax.security.auth.x500.X500Principal;
 import org.junit.Test;
+
+import javax.security.auth.x500.X500Principal;
+import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static wdawson.samples.revoker.representations.CertificateSummary.DATE_TIME_FORMATTER;
@@ -11,7 +12,7 @@ import static wdawson.samples.revoker.representations.CertificateSummary.DATE_TI
  * @author wdawson
  */
 public class CertificateSummaryTest {
-    private static final String VALID_LINE = "V\t161224002251Z\t\t100B\tunknown\t" +
+    private static final String VALID_LINE = "V\t371224002251Z\t\t100B\tunknown\t" +
             "/C=US/ST=California/L=San Francisco/O=test/OU=test/CN=test";
     private static final String VALID_EXPIRED_LINE = "V\t151215010838Z\t\t100B\tunknown\t" +
             "/C=US/ST=California/L=San Francisco/O=test/OU=test/CN=test";
@@ -29,7 +30,7 @@ public class CertificateSummaryTest {
         CertificateSummary revokedSummary = CertificateSummary.parseLine(VALID_LINE);
         CertificateSummary expected = CertificateSummary.newBuilder()
                 .withStatus(CertificateStatus.VALID)
-                .withExpirationTime(DATE_TIME_FORMATTER.parseDateTime("161224002251Z"))
+                .withExpirationTime(DATE_TIME_FORMATTER.parseDateTime("371224002251Z"))
                 .withRevocationTime(null)
                 .withRevocationReason(null)
                 .withSerialNumber(new BigInteger("100B", 16))
